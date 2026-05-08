@@ -3,7 +3,7 @@ from sentence_transformers import SentenceTransformer, util
 
 app = FastAPI()
 
-model = SenteceTransformer('all-MiniLM-L6-v2')
+model = SentenceTransformer('all-MiniLM-L6-v2')
 
 def normalizar_texto(texto):
   if texto is None:
