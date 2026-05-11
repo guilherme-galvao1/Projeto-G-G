@@ -80,7 +80,7 @@ async def ranking(data:dict):
 
     score_desejaveis = (calcular_match_requisitos(texto_candidato, requisitos_desejaveis))
 
-    score_final = (score_semantico * 0.6) + (score_obrigatorio * 0.3) + (score_desejaveis * 0,1)
+    score_final = (score_semantico * 0.6) + (score_obrigatorio * 0.3) + (score_desejaveis * 0.1)
 
     eliminado = False
     if requisitos_obrigatorios:
