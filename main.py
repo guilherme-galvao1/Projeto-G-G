@@ -59,7 +59,7 @@ async def ranking(data:dict):
   Requisitos desejaveis: {",".join(requisitos_desejaveis)}
   """
 
-  embedding_vaga = model.encode(model.encode(texto_vaga), convert_to_tensor=True)
+  embedding_vaga = model.encode(texto_vaga, convert_to_tensor=True)
 
   resultados = []
 
