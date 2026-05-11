@@ -6,10 +6,12 @@ app = FastAPI()
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 def normalizar_texto(texto):
-  if texto is None:
-    return ""
-
-  return str(texto).lower().strip()
+    if texto is None:
+        return ""
+      
+    texto = str(texto).lower().strip()
+    texto = re.sub(r'\s+', ' ', texto)
+    return texto
 
 def calcular_match_requisitos(texto_candidato, requisitos):
   if not requisitos:
@@ -23,6 +25,9 @@ def calcular_match_requisitos(texto_candidato, requisitos):
 
     if requisito in texto_candidato:
       matches += 1
+    else:
+      if any(word in texto_candidato for word in requisito.split()):
+        matches += 0.5
 
   return matches / len(requisitos)
 
@@ -80,7 +85,7 @@ async def ranking(data:dict):
 
     score_desejaveis = (calcular_match_requisitos(texto_candidato, requisitos_desejaveis))
 
-    score_final = (score_semantico * 0.6) + (score_obrigatorio * 0.3) + (score_desejaveis * 0.1)
+    score_final = (score_semantico * 0.4) + (score_obrigatorio * 0.4) + (score_desejaveis * 0.2)
 
     eliminado = False
     if requisitos_obrigatorios:
