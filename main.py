@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from sentence_transformers import SentenceTransformer, util
+import re
 
 app = FastAPI()
 
