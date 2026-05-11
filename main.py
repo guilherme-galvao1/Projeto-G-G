@@ -48,6 +48,10 @@ async def ranking(data:dict):
     "requisitos_desejaveis", []
   )
 
+  data_limite = vaga.get(
+    "data_limite", []
+  )
+
   texto_vaga = f"""
   Nome da vaga: {nome_vaga}
   Descricao: {descricao}
